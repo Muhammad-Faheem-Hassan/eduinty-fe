@@ -47,7 +47,7 @@ const CampusList = ({ onEdit }) => {
     ];
 
     return (
-        <Box sx={{ width: "100%", overflowX: "auto", p: 2 }}>
+        <Box sx={{ width: "100%", overflowX: "auto" }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
                 <Typography variant="h5"> Campus List</Typography>
                 <Button

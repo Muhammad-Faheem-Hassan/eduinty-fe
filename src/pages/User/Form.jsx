@@ -23,7 +23,7 @@ const humanReadAbleRole = {
 const UserForm = ({ userId, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [campuses, setCampuses] = useState([]);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -71,7 +71,7 @@ const UserForm = ({ userId, onSuccess }) => {
         ...data,
         credits: 0, // Force default
       });
-     navigate("/users/list"); 
+      navigate("/users/list");
     } catch (error) {
       console.error(error);
       alert("Error saving user");
@@ -144,8 +144,23 @@ const UserForm = ({ userId, onSuccess }) => {
               control={control}
               rules={{ required: "Role is required" }}
               render={({ field }) => (
-                <TextField {...field} label="Select Role" select fullWidth size="small"
-                  error={!!errors.role} helperText={errors.role?.message}>
+                <TextField
+                  {...field}
+                  label="Select Role"
+                  select
+                  fullWidth
+                  size="small"
+                  error={!!errors.role}
+                  helperText={errors.role?.message}
+                  sx={{
+                    width: '100%',
+                    '& .MuiInputBase-root': {
+                      minWidth: '200px', // Set a fixed minimum width
+                      width: '100%',
+                    }
+                  }}
+
+                >
                   {roles.map((role) => (
                     <MenuItem key={role} value={role}>
                       {humanReadAbleRole[role]}
@@ -183,6 +198,13 @@ const UserForm = ({ userId, onSuccess }) => {
                   variant="outlined"
                   error={!!errors.campusId}
                   helperText={errors.campusId?.message}
+                  sx={{
+                    width: '100%',
+                    '& .MuiInputBase-root': {
+                      minWidth: '200px', // Set a fixed minimum width
+                      width: '100%',
+                    }
+                  }}
                   SelectProps={{
                     displayEmpty: true,
                     sx: { height: 40 }, // match height with text fields
@@ -275,7 +297,7 @@ const UserForm = ({ userId, onSuccess }) => {
               variant="outlined"
               onClick={() => reset()}
               disabled={loading}
-               mr={1}
+              mr={1}
             >
               Reset
             </Button>

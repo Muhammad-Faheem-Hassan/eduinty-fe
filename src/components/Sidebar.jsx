@@ -8,6 +8,7 @@ import {
   Toolbar
 } from "@mui/material";
 import { Home, Person, Settings, School } from "@mui/icons-material";
+import Logo from "../assets/logo.png";
 
 const drawerWidth = 240;
 
@@ -20,10 +21,27 @@ const menuItems = [
 
 
 const Sidebar = ({ mobileOpen, handleDrawerToggle }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const drawerContent = (
     <div>
-      <Toolbar />
+      {/* <Toolbar /> */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",  // horizontal center
+          alignItems: "center",      // vertical center
+          height: 80,               // adjust this height to control spacing
+        }}
+      >
+        <img
+          src={Logo}
+          alt="EdUnity Logo"
+          style={{
+            height: 40,
+            objectFit: "contain",
+          }}
+        />
+      </div>
       <List>
         {menuItems.map((item, index) => (
           <ListItemButton key={index} onClick={() => navigate(item.path)}>
